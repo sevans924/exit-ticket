@@ -1,0 +1,83 @@
+body {
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande',
+    sans-serif;
+  font-weight: 300;
+}
+
+#note-container {
+  padding: 20px;
+  margin: 10px
+}
+
+.note-card {
+  border: 3px solid #007090;
+  border-radius: 5px;
+}
+
+
+input:focus {
+  outline: none;
+}
+
+/* .note-card {
+  float: left;
+  width: 250px;
+  margin: auto;
+}
+
+.note-frame {
+  width: 230px;
+  margin: 10px;
+  background: #EAEBED;
+  color: #5E6472;
+} */
+
+
+
+.center-text {
+  text-align: center;
+}
+
+/* #pokemon-post-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#pokemon-post-form p {
+  font-size: 1.2rem;
+  color: #2d72fc;
+}
+
+#pokemon-post-form input[type='text'] {
+  font-size: 2rem;
+  border: 3px solid #fecd2f;
+  color: #2d72fc;
+} */
+
+.btn-primary {
+  font-size: 2rem;
+  border: 3px solid #007090;
+  background-color: #EAEBED;
+  color: #007090;
+}
+
+#delete {
+  font-size: 1rem;
+  border: 3px solid #F76F8E;
+  background-color: #EAEBED;
+  color: #F76F8E;
+}
+
+#edit {
+  font-size: 1rem;
+  border: 3px solid #007090;
+  background-color: #EAEBED;
+  color: #007090;
+}
+
+/* .pokemon-button:hover {
+  background-color: #2d72fc;
+  color: #fecd2f;
+} */
