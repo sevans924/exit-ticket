@@ -7,8 +7,8 @@ class App {
     this.createNotes = this.createNotes.bind(this);
     this.addNotes = this.addNotes.bind(this);
   }
-  
-////event listener for page load? listener that loads
+
+
   attachEventListeners() {
     $('#notes-list').on('click', 'button', this.handleEditClick);
     $('#new-note-form').on('submit', this.handleFormSubmit);

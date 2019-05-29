@@ -4,7 +4,7 @@ class Note {
     this.topic = data.topic;
     this.content = data.content;
     this.prompt = data.prompt;
-    this.time = data.time;
+    this.created_at = data.created_at.substring(0, 10);
     this.student_id = data.student_id;
     this.teacher_id = data.teacher_id;
     Note.all.push(this);
