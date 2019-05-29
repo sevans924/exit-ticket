@@ -10,7 +10,7 @@ class App {
 
 
   attachEventListeners() {
-    $('#notes-list').on('click', 'button', this.handleEditClick);
+    $('#note-container').on('click', 'edit-button', this.handleEditClick);
     $('#new-note-form').on('submit', this.handleFormSubmit);
   }
 

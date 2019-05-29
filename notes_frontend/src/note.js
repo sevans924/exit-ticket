@@ -5,8 +5,8 @@ class Note {
     this.content = data.content;
     this.prompt = data.prompt;
     this.created_at = data.created_at.substring(0, 10);
-    this.student_id = data.student_id;
-    this.teacher_id = data.teacher_id;
+    // this.student_id = data.student_id;
+    // this.teacher_id = data.teacher_id;
     Note.all.push(this);
   }
 
@@ -26,8 +26,8 @@ class Note {
         <h3> ${this.content}</h3>
         <h3> ${this.created_at}</h3>
         </div>
-        <button data-action="edit" class="edit-button" onclick="editNote(${this.id})">Edit</button>
-        <button data-action="delete" class="delete-button" onclick="deleteNote(${this.id})">Delete</button>
+        <button data-action="edit" class="edit-button">Edit</button>
+        <button data-action="delete" class="delete-button">Delete</button>
       </div>
     </div>`)
   }
