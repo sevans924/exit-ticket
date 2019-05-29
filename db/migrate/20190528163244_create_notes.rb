@@ -4,7 +4,6 @@ class CreateNotes < ActiveRecord::Migration[5.2]
       t.string :topic
       t.text :content
       t.string :prompt
-      t.string :time
       t.references :student, foreign_key: true
       t.references :teacher, foreign_key: true
 

@@ -10,7 +10,7 @@ class App {
 
   attachEventListeners() {
     $('#notes-list').on('click', 'button', this.handleEditClick);
-    $('#update').on('submit', 'form', this.handleFormSubmit);
+    $('#new-note-form').on('submit', this.handleFormSubmit);
   }
 
   createNotes(notes) {
@@ -23,27 +23,30 @@ class App {
 
   addNotes() {
     $('#notes-list').empty();
-    Note.all.forEach(note => $('#notes-list').append(note.renderListItem()));
+    Note.all.forEach(note => $('#note-container').append(note.renderListItem()));
   }
 
-  handleFormSubmit(e) {
-    e.preventDefault();
-    const id = e.target.dataset.id;
-    const note = Note.findById(id);
-    const title = $(e.target)
-      .find('input')
-      .val();
-    const content = $(e.target)
-      .find('textarea')
-      .val();
+  handleFormSubmit(event){
+    event.preventDefault()
 
-    const bodyJSON = { title, content };
-    this.adapter.updateNote(note.id, bodyJSON).then(updatedNote => {
-      const note = Note.findById(updatedNote.id);
-      note.update(updatedNote);
-      this.addNotes();
-    });
+    let note = {
+      topic: $('#topic').val(),
+      content: $('#content').val(),
+      prompt: $('#prompt-type').val()
+    }
+
+    fetch('http://localhost:3000/api/v1/notes', {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify(note), // data can be `string` or {object}!
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.error('Error:', error));
   }
+
+
 
   handleEditClick(e) {
     const id = e.target.dataset.id;

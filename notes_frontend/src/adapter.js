@@ -1,6 +1,6 @@
 class Adapter {
   constructor() {
-    this.baseUrl = 'http://localhost:3000';
+    this.baseUrl = 'http://localhost:3000/api/v1/notes';
     this.headers = {
       'Content-Type': 'application/json',
       Accept: 'application/json'
@@ -8,11 +8,11 @@ class Adapter {
   }
 
   fetchNotes() {
-    return this.get(`${this.baseUrl}/notes`);
+    return this.get(`${this.baseUrl}`);
   }
 
   updateNote(id, body) {
-    return this.patch(`${this.baseUrl}/notes/${id}`, body);
+    return this.patch(`${this.baseUrl}/${id}`, body);
   }
 
   get(url) {

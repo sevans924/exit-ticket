@@ -35,7 +35,7 @@ class Api::V1::NotesController < ApplicationController
 private
 
       def note_params
-        params.require(:note).permit(:title, :content)
+        params.require(:notes).permit(:topic, :content, :prompt, :student_id, :teacher_id)
       end
 
       def find_note
