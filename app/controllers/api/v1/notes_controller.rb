@@ -4,11 +4,15 @@ class Api::V1::NotesController < ApplicationController
 
       def index
         @notes = Note.all
+        @students = Student.all
+        @teachers = Teacher.all 
         render json: @notes
       end
 
       def create
         @note = Note.new(note_params)
+        @students = Student.all
+        @teachers = Teacher.all
         if @note.save
           render json: @note , status: :accepted
         else

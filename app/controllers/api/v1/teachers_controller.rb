@@ -1,11 +1,11 @@
-class TeachersController < ApplicationController
+class Api::V1::TeachersController < ApplicationController
 #   before_action :find_teacher, only: [:update, :destroy]
 #
-#       def index
-#         @note = Note.all
-#         render json: @notes
-#       end
-#
+      def index
+        @teachers = Teacher.all
+        render json: @teachers
+      end
+
 #
 #
 #

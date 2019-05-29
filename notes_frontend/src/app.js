@@ -33,7 +33,9 @@ class App {
     let note = {
       topic: $('#topic').val(),
       content: $('#content').val(),
-      prompt: $('#prompt-type').val()
+      prompt: $('#prompt-type').val(),
+      teacher: $('#teacher').val(),
+      student: $('#student').val()
     }
 
     fetch('http://localhost:3000/api/v1/notes', {

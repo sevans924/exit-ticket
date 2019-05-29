@@ -188,4 +188,36 @@ $(document).ready(() => {
   const app = new App();
   app.attachEventListeners();
   app.adapter.fetchNotes().then(app.createNotes);
+
+  let getAllTeachers = () => {
+    return fetch('http://localhost:3000/api/v1/teachers')
+    .then(response => response.json())
+    .then(json => json)
+  }
+
+  getAllTeachers().then((teachers) => {
+    teachers.forEach((teacher) => {
+        let option = document.createElement("option");
+        option.value = teacher.first_name + teacher.last_name;
+        option.innerHTML = teacher.first_name + teacher.last_name;
+        $('#teacher').append(option);
+      });
+  });
+
+
+  let getAllStudents = () => {
+    return fetch('http://localhost:3000/api/v1/students')
+    .then(response => response.json())
+    .then(json => json)
+  }
+
+  getAllStudents().then((students) => {
+    students.forEach((student) => {
+        let option = document.createElement("option");
+        option.value = student.first_name + student.last_name;
+        option.innerHTML = student.first_name + student.last_name;
+        $('#student').append(option);
+      });
+  });
+
 });
