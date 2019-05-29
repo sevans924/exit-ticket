@@ -26,8 +26,8 @@ class Note {
         <h3> ${this.content}</h3>
         <h3> ${this.created_at}</h3>
         </div>
-        <button data-action="edit" class="edit-button" onclick="editNote(${note.id})">Edit</button>
-        <button data-action="delete" class="delete-button" onclick="deleteNote(${note.id})">Delete</button>
+        <button data-action="edit" class="edit-button" onclick="editNote(${this.id})">Edit</button>
+        <button data-action="delete" class="delete-button" onclick="deleteNote(${this.id})">Delete</button>
       </div>
     </div>`)
   }

@@ -3,7 +3,7 @@ class Adapter {
     this.baseUrl = 'http://localhost:3000/api/v1/notes';
     this.headers = {
       'Content-Type': 'application/json',
-      Accept: 'application/json'
+      'Accept': 'application/json'
     };
   }
 
