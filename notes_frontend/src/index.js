@@ -196,10 +196,11 @@ $(document).ready(() => {
   }
 
   getAllTeachers().then((teachers) => {
+
     teachers.forEach((teacher) => {
         let option = document.createElement("option");
-        option.value = teacher.first_name + teacher.last_name;
-        option.innerHTML = teacher.first_name + teacher.last_name;
+        option.value = teacher.id;
+        option.innerHTML = teacher.first_name + ' ' + teacher.last_name;
         $('#teacher').append(option);
       });
   });
@@ -214,8 +215,8 @@ $(document).ready(() => {
   getAllStudents().then((students) => {
     students.forEach((student) => {
         let option = document.createElement("option");
-        option.value = student.first_name + student.last_name;
-        option.innerHTML = student.first_name + student.last_name;
+        option.value = student.id;
+        option.innerHTML = student.first_name + ' ' + student.last_name;
         $('#student').append(option);
       });
   });

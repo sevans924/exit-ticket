@@ -34,8 +34,8 @@ class App {
       topic: $('#topic').val(),
       content: $('#content').val(),
       prompt: $('#prompt-type').val(),
-      teacher: $('#teacher').val(),
-      student: $('#student').val()
+      teacher_id: $('#teacher').val(),
+      student_id: $('#student').val()
     }
 
     fetch('http://localhost:3000/api/v1/notes', {
@@ -43,11 +43,15 @@ class App {
       body: JSON.stringify(note), // data can be `string` or {object}!
       headers:{
         'Content-Type': 'application/json'
+
       }
     }).then(res => res.json())
-    .then(response => console.log('Success:', JSON.stringify(response)))
-    .catch(error => console.error('Error:', error));
-  }
+    .then(data => {
+   let newNote = new Note(data)
+   $('#note-conatiner').innerHTML += newNote.renderListItem()
+ }).catch(error => console.log(error.message))
+
+}
 
 
 
@@ -56,4 +60,5 @@ class App {
     const note = Note.findById(id);
     $('#update').html(note.renderUpdateForm());
   }
+
 }
