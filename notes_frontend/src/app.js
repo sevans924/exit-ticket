@@ -2,16 +2,17 @@ class App {
   constructor() {
     this.adapter = new Adapter();
 
-    this.handleEditClick = this.handleEditClick.bind(this);
+    this.handleCommentClick = this.handleCommentClick.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.createNotes = this.createNotes.bind(this);
     this.addNotes = this.addNotes.bind(this);
+    // this.createComment = this.createComment.bind(this);
   }
 
 
   attachEventListeners() {
-    $('#note-container').on('click', 'edit-button', this.handleEditClick);
     $('#new-note-form').on('submit', this.handleFormSubmit);
+    $('#comment-form').on('click', this.handleCommentClick);
   }
 
   createNotes(notes) {
@@ -53,12 +54,20 @@ class App {
 
 }
 
+handleCommentClick() {
+  event.preventDefault()
+    const commentForm = $('#comment_form')
+    const commentInput = $('#comment_input')
+    const newComment = document.createElement('li')
+    newComment.innerHTML = commentInput.value
+    $('#comments').append(newComment)
 
+       }
 
-  handleEditClick(e) {
-    const id = e.target.dataset.id;
-    const note = Note.findById(id);
-    $('#update').html(note.renderUpdateForm());
-  }
+  // handleCommentClick(e) {
+  //   const id = e.target.dataset.id;
+  //   const note = Note.findById(id);
+  //   $('#update').html(note.renderUpdateForm());
+  // }
 
 }

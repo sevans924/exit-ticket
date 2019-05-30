@@ -5,7 +5,7 @@ class Api::V1::NotesController < ApplicationController
       def index
         @notes = Note.all
         @students = Student.all
-        @teachers = Teacher.all 
+        @teachers = Teacher.all
         render json: @notes
       end
 
@@ -39,7 +39,7 @@ class Api::V1::NotesController < ApplicationController
 private
 
       def note_params
-        params.require(:note).permit(:topic, :content, :prompt, :created_at)
+        params.require(:note).permit(:topic, :content, :prompt, :teacher_id, :student_id, :created_at)
       end
 
       def find_note

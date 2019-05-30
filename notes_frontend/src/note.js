@@ -22,13 +22,18 @@ class Note {
       <div class="note-frame">
         <h2 class="center-text"> <strong>${this.topic}</strong></h2>
         <div class="note-content">
-        <h3>Teacher: ${teacher.last_name}</h3>
+        <h3>Teacher: George Feeney</h3>
         <h3>${this.prompt}</h3>
         <h3> ${this.content}</h3>
         <h3> ${this.created_at}</h3>
         </div>
-        <button data-action="edit" class="edit-button">Edit</button>
-        <button data-action="delete" class="delete-button">Delete</button>
+        <form id="comment_form">
+           <input id="comment_input" type="text" name="comment" placeholder="Add Comment"/>
+           <input type="submit" value="Comment"/>
+         </form>
+         <ul id="comments">
+              <!-- <li> for each comment goes here -->
+         </ul>
       </div>
     </div>`)
   }

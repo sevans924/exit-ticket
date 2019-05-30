@@ -222,3 +222,16 @@ $(document).ready(() => {
   });
 
 });
+
+// const commentForm = $('#comment_form')
+// commentForm.addEventListener('click', event => createComment())
+
+// function createComment() {
+//   event.preventDefault()
+//     const commentForm = $('#comment_form')
+//     const commentInput = $('#comment_input')
+//     const newComment = document.createElement('li')
+//     newComment.innerHTML = commentInput.value
+//     $('#comments').append(newComment)
+//
+//        }
