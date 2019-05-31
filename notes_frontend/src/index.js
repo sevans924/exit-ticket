@@ -163,7 +163,7 @@ function renderCommentList(comment){
 function deleteComment(comment, event){
   event.preventDefault()
 
-  fetch(`http://localhost:3000/api/v1/notes/${comment.id}`, {
+  fetch(`http://localhost:3000/api/v1/comments/${comment.id}`, {
     method: 'DELETE'
   })
   event.target.parentNode.remove()
