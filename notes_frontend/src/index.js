@@ -43,11 +43,11 @@ function renderListItem(note) {
 
          <button class="comment_button" onclick="commentFunction(${note.id})" name="comment">Comment</button>
        </form>
-       <ul id="comments">
+       <ul id="comments_${note.id}">
             <!-- <li> for each comment goes here -->
        </ul>
     </div>
-    <button data-action="delete" class="delete-button" onclick="deleteNote(${note.id})">Delete</button>
+    <button data-action="delete" class="delete-button" onclick="deleteNote(${note.id}, event)">Delete</button>
 
   </div>`)
 }
@@ -149,7 +149,7 @@ function commentFunction(note){
       'Content-Type': 'application/json'
     }
   }).then(res => res.json())
-    .then(comment => renderCommentList(comment))
+    .then(comment => renderCommentList(comment, note))
 
 
 }
@@ -158,11 +158,13 @@ function commentFunction(note){
 
 
 
-function renderCommentList(comment){
-  const commentContainer = document.getElementById('comments')
+function renderCommentList(comment, note){
+  const parentNote = document.querySelector(`#comments_${note}`)
+  // debugger;
+  // const commentContainer = parentNote.querySelector('#comments')
   const newComment = document.createElement('li')
   newComment.innerHTML = comment.content
-  commentContainer.appendChild(newComment)
+  parentNote.appendChild(newComment)
 }
 
 
@@ -172,13 +174,13 @@ function renderCommentList(comment){
 ////////////////////end comments
 //////////////////////DELETE - now located in HTML
 
-// function deleteNote(note, event) {
-//   event.preventDefault()
-//   fetch(`http://localhost:3000/api/v1/notes/${note.id}`, {
-//     method: 'DELETE'
-//   })
-//   event.target.parentNode.remove()
-// }
+function deleteNote(note, event) {
+  event.preventDefault()
+  fetch(`http://localhost:3000/api/v1/notes/${note}`, {
+    method: 'DELETE'
+  })
+  event.target.parentNode.remove()
+}
 
 
 
