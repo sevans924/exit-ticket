@@ -33,10 +33,10 @@ function renderListItem(note) {
     <div class="note-frame">
       <h2 class="center-text"> <strong>Topic: ${note.topic}</strong></h2>
       <div class="note-content">
-      <h3>Teacher: George Feeney</h3>
       <h3>Prompt: ${note.prompt}</h3>
-      <h3> Ticket: ${note.content}</h3>
-      <h3> Date: ${note.created_at.substring(0, 10)}</h3>
+      <h3> ${note.content}</h3>
+      <h5>Teacher: George Feeney</h5>
+      <h5> Date: ${note.created_at.substring(0, 10)}</h5>
       </div>
       <form id="comment_form">
          <input id="comment_input" type="text" name="comment" placeholder="Add Comment"/>
@@ -150,8 +150,23 @@ function renderAllComments(allCommentData) {
 function renderCommentList(comment){
   const parentNote = document.querySelector(`#comments_${comment.note_id}`)
   const newComment = document.createElement('li')
+  const delComment = document.createElement("BUTTON");
+  delComment.innerHTML = "Delete"
+  delComment.setAttribute("id", "deleteCom");
+  delComment.addEventListener("click", event => deleteComment(comment, event))
   newComment.innerHTML = comment.content
+  newComment.appendChild(delComment)
   parentNote.appendChild(newComment)
+
+}
+
+function deleteComment(comment, event){
+  event.preventDefault()
+
+  fetch(`http://localhost:3000/api/v1/notes/${comment.id}`, {
+    method: 'DELETE'
+  })
+  event.target.parentNode.remove()
 }
 
 function newCommentFunction(note){
@@ -180,8 +195,14 @@ function newCommentFunction(note){
 function renderNewComment(comment, note){
   const parentNote = document.querySelector(`#comments_${note}`)
   const newComment = document.createElement('li')
+  const delComment = document.createElement("BUTTON");
+  delComment.innerHTML = "Delete"
+  delComment.setAttribute("id", "deleteCom");
+  delComment.addEventListener("click", event => deleteComment(comment, event))
   newComment.innerHTML = comment.content
+  newComment.appendChild(delComment)
   parentNote.appendChild(newComment)
+
 }
 
 
