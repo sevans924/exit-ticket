@@ -18,7 +18,7 @@ class Note {
 
   renderListItem() {
     return(`
-    <div class="note-card" id=note-${this.id}>
+    <div class="note-card" id=${this.id}>
       <div class="note-frame">
         <h2 class="center-text"> <strong>${this.topic}</strong></h2>
         <div class="note-content">
@@ -28,8 +28,9 @@ class Note {
         <h3> ${this.created_at}</h3>
         </div>
         <form id="comment_form">
-           <input id="comment_input" type="text" name="comment" placeholder="Add Comment"/>
-           <input type="submit" value="Comment"/>
+           <input class="comment_input" type="text" name="comment" placeholder="Add Comment"/>
+
+           <button class="comment_button" name="comment">Comment</button>
          </form>
          <ul id="comments">
               <!-- <li> for each comment goes here -->
@@ -37,6 +38,8 @@ class Note {
       </div>
     </div>`)
   }
+
+  // <input  type="submit" value="Comment"/> This went under input before
 
   // update(e) {
   //   e.preventDefault();

@@ -12,17 +12,19 @@ body {
 .note-card {
   border: 3px solid #007090;
   border-radius: 5px;
+  background: #EAEBED;
 }
 
 
 input:focus {
   outline: none;
 }
-
-/* .note-card {
+/*
+.note-card {
   float: left;
   width: 250px;
   margin: auto;
+  background: #EAEBED;
 }
 
 .note-frame {

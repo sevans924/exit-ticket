@@ -16,7 +16,7 @@
   <hr>
   <div>
 
-    <h1>Exit Tickets</h1>
+    <h1>New Ticket</h1>
     <br>
     <form id="new-note-form">
       <div class="form-group">
@@ -53,12 +53,12 @@
         <input type="text" class="form-control" id="content" placeholder="Type here...">
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" id="btn btn-primary">Submit</button>
     </form>
   </div>
   <br>
 
-  <h2>My Tickets:</h2>
+  <h2>Today's Tickets:</h2>
 
   <div class="">
 
@@ -66,10 +66,42 @@
       </div>
     </div>
 
-    <script src="src/adapter.js"></script>
+    <!-- <script src="src/adapter.js"></script>
    <script src="src/app.js"></script>
-   <script src="src/note.js"></script>
-   <script src="src/index.js"></script>
+   <script src="src/note.js"></script> -->
+   <script src="src/index.js"defer></script>
+   <script>
+   function deleteNote(note) {
+     event.preventDefault()
+     fetch(`http://localhost:3000/api/v1/notes/` + note, {
+       method: 'DELETE'
+     })
+     event.target.parentNode.remove()
+   }
+   </script>
+   <!-- <script>
+     function commentFunction(note){
+       event.preventDefault();
+
+       let comment = {
+         content: document.getElementsByClassName('comment_input').value,
+         note_id: note
+       }
+       debugger;
+       fetch('http://localhost:3000/api/v1/comments', {
+         method: 'POST', // or 'PUT'
+         body: JSON.stringify(comment), // data can be `string` or {object}!
+         headers:{
+           'Content-Type': 'application/json'
+         }
+       }).then(res => res.json())
+         .then(comment => console.log(comment))
+         // newComment.innerHTML = commentInput.value
+         // $('#comments').append(newComment)
+
+     }
+
+   </script> -->
 
 </body>
 </html>
