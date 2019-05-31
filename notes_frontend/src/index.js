@@ -16,14 +16,6 @@ function renderAllNotes(allNoteData) {
   return allNoteData.map(note => renderListItem(note)).join('')
 }
 
-  // function showNotes(noteArray){
-  //   return noteArray.map( note => addNote(note)).join('')
-  // }
-  //
-  // function addNote(note){
-  //   const divCard = renderListItem(note)
-  //    notesContainer.appendChild(divCard)
-  // }
 
 
 
@@ -119,9 +111,7 @@ function handleFormSubmit(event){
 
 }
 
-// function addSingleNote(newNote){
-//   $('#note-container').append(renderListItem(newNote));
-// }
+
 
 
 
@@ -129,8 +119,6 @@ function handleFormSubmit(event){
 //////////////////////end create
 //////////////////comments - can add comment to database, but can't access comment value and still won't post to the page
 
-// const commentButton = document.getElementsByClassName("comment_button")
-// commentButton.addEventListener('click', event => commentFunction())
 
 let allCommentData = []
 
@@ -231,12 +219,9 @@ function deleteNote(note, event) {
 
 
 //////////////////////////
-/////////////////////////
+/////////////////////////load students and teachers into create form
 
-// $(document).ready(() => {
-//   const app = new App();
-  // attachEventListeners();
-  // fetchNotes().then(createNotes);
+
 
   let getAllTeachers = () => {
     return fetch('http://localhost:3000/api/v1/teachers')
