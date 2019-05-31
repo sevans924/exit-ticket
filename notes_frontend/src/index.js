@@ -7,13 +7,13 @@ const notesContainer = document.querySelector('#note-container')
 const endPoint = 'http://localhost:3000/api/v1/notes';
 fetch(endPoint)
   .then(res => res.json())
-  .then((noteJSONData) => {
+  .then(noteJSONData => {
       allNoteData = noteJSONData
-      notesContainer.innerHTML = renderAllNotes(allNoteData)
+      notesContainer.innerHTML = renderAllNotes(allNoteData.reverse())
     })
 
 function renderAllNotes(allNoteData) {
-  return allNoteData.map(renderListItem).join('')
+  return allNoteData.map(note => renderListItem(note)).join('')
 }
 
   // function showNotes(noteArray){
@@ -41,7 +41,7 @@ function renderListItem(note) {
       <form id="comment_form">
          <input id="comment_input" type="text" name="comment" placeholder="Add Comment"/>
 
-         <button class="comment_button" onclick="commentFunction(${note.id})" name="comment">Comment</button>
+         <button class="comment_button" onclick="newCommentFunction(${note.id})" name="comment">Comment</button>
        </form>
        <ul id="comments_${note.id}">
             <!-- <li> for each comment goes here -->
@@ -132,11 +132,30 @@ function handleFormSubmit(event){
 // const commentButton = document.getElementsByClassName("comment_button")
 // commentButton.addEventListener('click', event => commentFunction())
 
+let allCommentData = []
+
+const commentEndPoint = 'http://localhost:3000/api/v1/comments';
+fetch(commentEndPoint)
+  .then(res => res.json())
+  .then(commentJSONData => {
+      allCommentData = commentJSONData
+      renderAllComments(allCommentData)
+    })
 
 
-function commentFunction(note){
+function renderAllComments(allCommentData) {
+  return allCommentData.map(comment => renderCommentList(comment)).join('')
+}
+
+function renderCommentList(comment){
+  const parentNote = document.querySelector(`#comments_${comment.note_id}`)
+  const newComment = document.createElement('li')
+  newComment.innerHTML = comment.content
+  parentNote.appendChild(newComment)
+}
+
+function newCommentFunction(note){
   event.preventDefault();
-
   let comment = {
     content: document.getElementById('comment_input').value,
     note_id: note
@@ -149,19 +168,17 @@ function commentFunction(note){
       'Content-Type': 'application/json'
     }
   }).then(res => res.json())
-    .then(comment => renderCommentList(comment, note))
-
-
+    .then(comment => {
+      allCommentData.unshift(comment)
+      renderNewComment(comment, note)
+    })
 }
 
 
 
 
-
-function renderCommentList(comment, note){
+function renderNewComment(comment, note){
   const parentNote = document.querySelector(`#comments_${note}`)
-  // debugger;
-  // const commentContainer = parentNote.querySelector('#comments')
   const newComment = document.createElement('li')
   newComment.innerHTML = comment.content
   parentNote.appendChild(newComment)
